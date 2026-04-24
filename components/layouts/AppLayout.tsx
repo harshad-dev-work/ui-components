@@ -4,6 +4,7 @@ import { useState } from "react";
 import BottomBar from "./BottomBar";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
 
@@ -22,11 +23,15 @@ const toggleSidebar = (): void => {
       ) : (
         <>
           <div className="lg:basis-16 bg-amber-300  lg:flex hidden">
-            <button onClick={toggleSidebar}>Open Sidebar</button>
+            <button onClick={toggleSidebar}>
+              <GiHamburgerMenu />
+            </button>
           </div>
 
           <div className=" sm:flex md:flex lg:hidden">
-            <button onClick={toggleSidebar}>hamburger</button>
+            <button onClick={toggleSidebar}>
+              <GiHamburgerMenu />
+            </button>
           </div>
         </>
       )}
