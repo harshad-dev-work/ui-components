@@ -12,10 +12,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex h-screen overflow-hidden">
-      {/* ✅ Sidebar */}
       <div
         className={`
-          bg-amber-200 h-full z-50 transition-all duration-300
+         bg-white h-full z-50 transition-all duration-300
 
           fixed top-0 left-0
           ${openSidebar ? "translate-x-0" : "-translate-x-full"}
@@ -29,7 +28,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         <Sidebar collapsed={collapsed} />
       </div>
 
-      {/* ✅ Overlay (mobile only) */}
       {openSidebar && (
         <div
           className="fixed inset-0 bg-black/40 lg:hidden"
@@ -37,11 +35,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         />
       )}
 
-      {/* ✅ Main */}
       <div className="flex flex-col flex-1">
-        {/* Topbar */}
         <div className="flex items-center justify-between p-2 shadow">
-          {/* Mobile Hamburger */}
           <button
             className="lg:hidden text-xl"
             onClick={() => setOpenSidebar(true)}
@@ -49,7 +44,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             <GiHamburgerMenu />
           </button>
 
-          {/* Desktop Toggle */}
           <button
             className="hidden lg:block text-xl"
             onClick={() => setCollapsed((prev) => !prev)}
@@ -60,7 +54,6 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           <Topbar />
         </div>
 
-        {/* Content */}
         <div className="flex-1 overflow-y-auto p-4">{children}</div>
 
         <BottomBar />
