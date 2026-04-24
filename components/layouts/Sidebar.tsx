@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Sidebar = () => {
+const Sidebar = ({ toggleSidebar }: { toggleSidebar: () => void } ) => {
   return (
     <div className='lg:basis-64'>
-      Side Bar
+      <button onClick={toggleSidebar}>hamburger</button>
     </div>
   )
 }
