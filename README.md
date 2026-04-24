@@ -34,3 +34,41 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+# 🎨 Color Palette
+
+## Primary
+- **Hex:** `#03AED2`
+- **Usage:** Main UI elements (buttons, links, active states, sidebar highlight)
+
+## Secondary
+- **Hex:** `#F8DE22`
+- **Usage:** Highlights, badges, subtle accents
+
+## Accent (CTA)
+- **Hex:** `#F45B26`
+- **Usage:** Call-to-action buttons (Create, Submit, Important actions)
+
+## Danger / Error
+- **Hex:** `#D12052`
+- **Usage:** Error messages, delete actions, alerts
+
+---
+
+## 🧱 Usage Guidelines
+
+- Use **Primary** most frequently
+- Use **Secondary** sparingly for attention
+- Use **Accent** for important actions only
+- Use **Danger** only for destructive or error states
+
+---
+
+## 🎯 Example (Tailwind)
+
+```html
+<button class="bg-primary text-white">Save</button>
+<button class="bg-accent text-white">Create</button>
+<span class="bg-secondary px-2 rounded">New</span>
+<button class="bg-danger text-white">Delete</button>
