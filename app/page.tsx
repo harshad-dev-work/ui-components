@@ -60,6 +60,8 @@ export default function Home() {
           </a>
         </div>
       </main>
+
+      <div className="bg-amber-800"></div>
     </div>
   );
 }
