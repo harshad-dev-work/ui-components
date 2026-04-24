@@ -1,14 +1,13 @@
-import React from 'react'
-import { GiHamburgerMenu } from "react-icons/gi";
-
-const Sidebar = ({ toggleSidebar }: { toggleSidebar: () => void } ) => {
+export default function Sidebar({ collapsed }: { collapsed: boolean }) {
   return (
-    <div className='lg:basis-64'>
-      <button onClick={toggleSidebar}>
-        <GiHamburgerMenu />
-      </button>
-    </div>
-  )
-}
+    <div className="p-2">
+      {/* Example item */}
+      <div className="flex items-center gap-2 p-2 hover:bg-amber-300 rounded">
+        <span>🏠</span>
 
-export default Sidebar
+        {/* 👇 hide text when collapsed */}
+        {!collapsed && <span>Dashboard</span>}
+      </div>
+    </div>
+  );
+}

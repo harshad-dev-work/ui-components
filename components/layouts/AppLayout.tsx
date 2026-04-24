@@ -7,45 +7,63 @@ import Topbar from "./Topbar";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
-
-    const [opensidebar, setOpenSidebar] = useState(false);
-
-const toggleSidebar = (): void => {
-  setOpenSidebar((prev) => !prev);
-};
+  const [openSidebar, setOpenSidebar] = useState(false); // mobile
+  const [collapsed, setCollapsed] = useState(true); // desktop
 
   return (
-    <div className="flex flex-row h-full">
-      {opensidebar ? (
-        <div className="lg:basis-64 md:basis-48 sm:basis-40 basis-40 bg-amber-200">
-          <Sidebar toggleSidebar={toggleSidebar} />
-        </div>
-      ) : (
-        <>
-          <div className="lg:basis-16 bg-amber-300  lg:flex hidden">
-            <button onClick={toggleSidebar}>
-              <GiHamburgerMenu />
-            </button>
-          </div>
+    <div className="flex h-screen overflow-hidden">
+      {/* ✅ Sidebar */}
+      <div
+        className={`
+          bg-amber-200 h-full z-50 transition-all duration-300
 
-          <div className=" sm:flex md:flex lg:hidden">
-            <button onClick={toggleSidebar}>
-              <GiHamburgerMenu />
-            </button>
-          </div>
-        </>
+          fixed top-0 left-0
+          ${openSidebar ? "translate-x-0" : "-translate-x-full"}
+
+          w-64
+
+          lg:static lg:translate-x-0
+          ${collapsed ? "lg:w-16" : "lg:w-64"}
+        `}
+      >
+        <Sidebar collapsed={collapsed} />
+      </div>
+
+      {/* ✅ Overlay (mobile only) */}
+      {openSidebar && (
+        <div
+          className="fixed inset-0 bg-black/40 lg:hidden"
+          onClick={() => setOpenSidebar(false)}
+        />
       )}
 
-      <div>
-        <div>
+      {/* ✅ Main */}
+      <div className="flex flex-col flex-1">
+        {/* Topbar */}
+        <div className="flex items-center justify-between p-2 shadow">
+          {/* Mobile Hamburger */}
+          <button
+            className="lg:hidden text-xl"
+            onClick={() => setOpenSidebar(true)}
+          >
+            <GiHamburgerMenu />
+          </button>
+
+          {/* Desktop Toggle */}
+          <button
+            className="hidden lg:block text-xl"
+            onClick={() => setCollapsed((prev) => !prev)}
+          >
+            <GiHamburgerMenu />
+          </button>
+
           <Topbar />
         </div>
 
-        <div className="">{children}</div>
+        {/* Content */}
+        <div className="flex-1 overflow-y-auto p-4">{children}</div>
 
-        <div>
-          <BottomBar />
-        </div>
+        <BottomBar />
       </div>
     </div>
   );
